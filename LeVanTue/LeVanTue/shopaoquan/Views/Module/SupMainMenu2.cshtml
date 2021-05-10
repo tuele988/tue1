@@ -1,0 +1,15 @@
+﻿@model IEnumerable<shopaoquan.Models.ModelMenu>
+@{var row = ViewBag.row_menu;}
+@{
+    Layout = null;
+}
+<li>
+    <a href="~/@row.Link">@row.Name</a>
+    <ul class="dropdown">
+        @foreach (var row_m in Model)
+        {
+            <li><a href="~/@row_m.Link">@row_m.Name</a></li>
+        }
+
+    </ul>
+</li>

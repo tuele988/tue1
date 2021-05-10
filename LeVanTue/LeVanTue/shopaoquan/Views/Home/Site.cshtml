@@ -1,0 +1,59 @@
+﻿@model IEnumerable<shopaoquan.Models.ModelCategory>
+@{
+    ViewBag.Title = "Site";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Action("MainMenu", "Module")
+
+@Html.Action("Slidershow", "Module")
+<section class="banner spad" style="padding-top: 0px; padding-bottom: 0px;">
+    @Html.Action("Listcategory", "Module")
+</section>
+
+
+<div class="row">
+    <div class="col-lg-3  " style="margin-left:50px;margin-top:127px">
+        @Html.Action("Productbuy", "Module")
+    </div>
+    <div class="col-lg-7 col-md-6 col-sm-6 col-md-6 col-sm-6 mix">
+        <div class="container">
+            <section class="product spad">
+                @foreach (var catitem in Model)
+                {
+                    @Html.Action("ProductHome", "Home", new { catid = catitem.Id, namecat = catitem.Name })
+
+                }
+            </section>
+        </div>
+    </div>
+</div>
+<!-- Product Section End -->
+<!-- Categories Section Begin -->
+<!-- Categories Section End -->
+<!-- Instagram Section Begin -->
+<section class="instagram spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+
+                <div class="instagram__pic">
+                    @Html.Action("newsproduct", "Module")
+                   
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="instagram__text">
+                    <h2>Sản Phẩm Mới Nhất</h2>
+                    <p>Sản phẩm có giá tốt nhất trên thi trường.</p>
+                    <h3>#Giatot</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Instagram Section End -->
+<!-- Latest Blog Section Begin -->
+<section class="latest spad">
+    @Html.Action("newpost", "Module")
+</section>

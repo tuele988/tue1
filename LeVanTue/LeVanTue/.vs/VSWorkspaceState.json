@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\shopaoquan",
+    "\\shopaoquan\\App_Start",
+    "\\shopaoquan\\Areas",
+    "\\shopaoquan\\Areas\\admin",
+    "\\shopaoquan\\Areas\\admin\\Controllers",
+    "\\shopaoquan\\Areas\\admin\\Views\\Shared"
+  ],
+  "SelectedNode": "\\shopaoquan\\Areas\\admin\\adminAreaRegistration.cs",
+  "PreviewInSolutionExplorer": false
+}

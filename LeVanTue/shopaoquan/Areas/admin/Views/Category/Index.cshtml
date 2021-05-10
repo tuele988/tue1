@@ -1,0 +1,53 @@
+﻿@model IEnumerable<shopaoquan.Models.ModelCategory>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_AdminLayput.cshtml";
+}
+<div class="card ">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-6 text-danger"> Quan Ly Danh muc</div>
+            <div class="col-6 text-right">
+                <a href="@Url.Action("Create","Category")" class="btn btn-sn btn-success"><i class="fas fa-plus"></i></a>
+                <a href="@Url.Action("Trash","Category")" class="btn btn-sn btn-danger"><i class="fas fa-trash"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Tên danh mục</th>
+                    <th scope="col">Slug</th>
+                    <th scope="col">Chức Năng</th>
+                    <th scope="col">Id</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var row in Model)
+                {
+                    <tr>
+                        <th>@row.Name</th>
+                        <td>@row.Slug</td>
+                        <td>
+                            @if (row.Status == 1)
+                            {
+                                <a href="@Url.Action("Status","Category",new {id=row.Id })" class="btn btn-sn btn-success"><i class="fas fa-toggle-on"></i></a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Status","Category",new {id=row.Id })" class="btn btn-sn btn-danger"><i class="fas fa-toggle-off"></i></a>
+                            }
+
+                            <a href="@Url.Action("Edit","Category",new {id=row.Id })" class="btn btn-sn btn-danger"><i class="fas fa-edit"></i></a>
+                            <a href="@Url.Action("Deltrash","Category",new {id=row.Id })" class="btn btn-sn btn-success"><i class="fas fa-trash"></i></a>
+
+                        </td>
+                        <td>@row.Id</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        </div>
+    </div>

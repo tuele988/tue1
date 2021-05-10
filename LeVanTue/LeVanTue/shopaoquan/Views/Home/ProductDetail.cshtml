@@ -1,0 +1,65 @@
+﻿@model shopaoquan.Models.ModerProduct
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Action("MainMenu", "Module")
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__pic__item">
+                    <img class="product__details__pic__item--large"
+                         src="~/public/img/Product/@Model.Img" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="">
+                    <h3>@Model.Name</h3>
+                    <div class="product__details__price">@Model.Price VND</div>
+                    <p>
+                        @Model.Detail
+                    </p>
+                    <div class="product__details__quantity">
+                        <div class="quantity">
+                            
+                        </div>
+                    </div>
+                    <a href="~/shoppingcart/addtocard/@Model.Id" class="primary-btn">Thêm vào giỏ hàng</a>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section class="related-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title related__product__title">
+                    <h2>Sản phẩm cùng loại </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var row in ViewBag.listOther)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6">
+
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="public/img/Product/@row.Img">     
+                        </div>
+                        <div >
+                            <h5><a href="~/@row.Slug">@row.Name</a></h5>
+                            <h5>@row.Price VND </h5>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,12 @@
+﻿@model IEnumerable<shopaoquan.Models.ModerProduct>
+@{
+    Layout = null;
+}
+
+
+
+    @foreach (var row_p in Model)
+    {
+        <div class="instagram__pic__item set-bg" data-setbg="public/img/Product/@row_p.Img"></div>
+    }
+

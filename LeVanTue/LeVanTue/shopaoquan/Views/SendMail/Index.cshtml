@@ -1,0 +1,53 @@
+﻿
+@model shopaoquan.Models.modelMail
+@Html.Action("MainMenu", "Module")
+<section>
+    <div>
+        @using (Html.BeginForm("Index", "lien-he", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <center>
+                <div class="contact-form spad">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="contact__form__title">
+                                    <h2>Liên Hệ</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-3 ml-3">
+                                    <p>Email</p>
+                                </div>
+                                <div class="col-lg-9 col-md-9">
+                                    @Html.TextBoxFor(Model => Model.To, new { style = "width:700px;height:70px;" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2 col-md-2 mt-3 ml-3">
+                                    <p>Têu đề</p>
+                                </div>
+                                <div class="col-lg-9 col-md-9 mt-2">
+                                    @Html.TextBoxFor(Model => Model.Subject, new { style = "width:700px;height:70px;" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2 col-md-4 mt-2 ml-2">
+                                    <p> Nội Dung</p>
+                                </div>
+                                <div class="col-lg-9 col-md-9 mt-2">
+                                    @Html.TextAreaFor(Model => Model.body, new { rows = "10", cols = "90" })
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="site-btn">Gửi </button>
+                    </div>
+                </div>
+              
+                <span style="color:green">@ViewBag.Message</span>
+            </center>
+        }
+    </div>
+</section>

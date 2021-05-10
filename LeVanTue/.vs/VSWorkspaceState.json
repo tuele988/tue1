@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\shopaoquan",
+    "\\shopaoquan\\App_Start",
+    "\\shopaoquan\\Controllers",
+    "\\shopaoquan\\Models",
+    "\\shopaoquan\\Views",
+    "\\shopaoquan\\Views\\Customer",
+    "\\shopaoquan\\Views\\Module"
+  ],
+  "SelectedNode": "\\shopaoquan\\Controllers\\loginController.cs",
+  "PreviewInSolutionExplorer": false
+}

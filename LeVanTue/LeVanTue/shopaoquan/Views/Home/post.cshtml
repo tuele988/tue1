@@ -1,0 +1,43 @@
+﻿@model PagedList.IPagedList<shopaoquan.Models.ModelPost>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Postpage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Action("MainMenu", "Module")
+
+        <div class="container">
+            <section class="product spad">
+                <h3 class="text-center m-5"></h3>
+                <div class="row product__filter">
+                    @foreach (var row in Model)
+                    {
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-md-6 col-sm-6 mix">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="public/img/Post/@row.Img">
+                                    <a href="~/@row.Slug" class="label">Chi tiết</a>
+                                    <ul class="product__hover">
+                                    </ul>
+                                </div>
+                                <div class="">
+                                    <a href="@row.Slug" style="color:black">@row.Title</a>
+                                    <h5>@row.Created_at</h5>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                @Html.PagedListPager(Model, page => Url.Action("tin-tuc", "Home", new { page }))
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+

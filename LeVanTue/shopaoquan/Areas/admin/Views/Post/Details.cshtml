@@ -1,0 +1,123 @@
+﻿@model shopaoquan.Models.ModelPost
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/admin/Views/Shared/_AdminLayput.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ModelPost</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Topid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Topid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Slug)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Slug)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Detail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Metakey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Metakey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Metadesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Metadesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Create_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Create_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Update_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Update_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Update_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Update_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

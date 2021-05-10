@@ -1,0 +1,54 @@
+﻿@using shopaoquan.Models
+@using shopaoquan.Controllers
+@{
+    ViewBag.Titile = "Search";
+    string key = Request.QueryString["key"];
+    List<ModerProduct> result = new List<ModerProduct>();
+
+}
+@Html.Action("MainMenu", "Module")
+<h2> kết quả tìm kiếm của @key là</h2>
+@{ if (key == "")
+    {
+        <h3> vui long nhập từ khóa</h3>
+
+    }
+    else
+    {
+        result = new TimKiemController().SearchProduct(key);
+     
+            <div class="container">
+                <section class="product spad">
+                   
+                    <div class="row product__filter">
+              
+                        @foreach (var row in result)
+                        {
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-md-6 col-sm-6 mix">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="public/img/Product/@row.Img">
+                                        @if (@row.Price > row.PriceSale)
+                                        {
+                                            <a href="~/@row.Slug" class="label" style="color:red;border-radius:10px"><i class="fas fa-fire"></i>Giảm giá</a>
+                                        }
+                                        <ul class="product__hover">
+                                        </ul>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <h6>@row.Name</h6>
+                                        <a href="~/@row.Slug" class="add-cart">@row.Name</a>
+
+                                        <h5>@row.Price VND</h5>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+       
+                </section>
+            </div>
+
+        }
+    }
+}

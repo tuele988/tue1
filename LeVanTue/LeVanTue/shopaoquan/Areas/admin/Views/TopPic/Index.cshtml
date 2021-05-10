@@ -1,0 +1,54 @@
+﻿@model IEnumerable<shopaoquan.Models.ModelTopPic>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_AdminLayput.cshtml";
+}
+
+<div class="card ">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-6 text-danger">Menu</div>
+            <div class="col-6 text-right">
+                <a href="@Url.Action("Create","TopPic")" class="btn btn-sn btn-success"><i class="fas fa-plus"></i></a>
+                <a href="@Url.Action("Trash","TopPic")" class="btn btn-sn btn-danger"><i class="fas fa-trash"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr class="bg-success">
+                    <th scope="col">Tên Chủ Đề</th>
+                    <th scope="col">Tên slug</th>
+                    <th scope="col">Chức Năng</th>
+                    <th scope="col">Id</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var row in Model)
+                {
+                <tr>
+                    <th>@row.Name</th>
+                    <th>@row.Slug</th>
+                    <td>
+                        @if (row.Status == 1)
+                        {
+                            <a href="@Url.Action("Status","TopPic",new {id=row.Id })" class="btn btn-sn btn-success"><i class="fas fa-toggle-on"></i></a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Status","TopPic",new {id=row.Id })" class="btn btn-sn btn-danger"><i class="fas fa-toggle-off"></i></a>
+                        }
+
+                        <a href="@Url.Action("Edit","TopPic",new {id=row.Id })" class="btn btn-sn btn-danger"><i class="fas fa-edit"></i></a>
+                        <a href="@Url.Action("Deltrash","TopPic",new {id=row.Id })" class="btn btn-sn btn-success"><i class="fas fa-trash"></i></a>
+
+                    </td>
+                    <td>@row.Id</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

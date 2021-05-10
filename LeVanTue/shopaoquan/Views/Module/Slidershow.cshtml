@@ -1,0 +1,30 @@
+﻿@model IEnumerable<shopaoquan.Models.SliderModel>
+@{ 
+    Layout = null;
+}
+<section class="hero">
+    <div class="hero__slider owl-carousel">
+        @foreach (var row_s in Model)
+        {
+            <div class="hero__items set-bg" data-setbg="templeate/img/hero/@row_s.Img" style="height: 550px; ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-7 col-md-8" >
+                            <div class="hero__text" style="height: 59px; margin-top: 121px; border-radius:5px;">
+
+                                <a href="/san-pham" class="primary-btn">Ghé Cửa Hàng <span class="arrow_right"></span></a>
+                                <div class="hero__social " style="margin-top: 90px;">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</section>

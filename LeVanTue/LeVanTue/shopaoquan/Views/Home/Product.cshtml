@@ -1,0 +1,55 @@
+﻿@model PagedList.IPagedList<shopaoquan.Models.ModerProduct>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Action("MainMenu", "Module")
+
+<div class="row">
+    <div class="col-lg-3  " style="margin-left:50px;margin-top:209px">
+        @Html.Action("Productbuy", "Module")
+    </div>
+    <div class="col-lg-7 col-md-6 col-sm-6 col-md-6 col-sm-6 mix">
+        <div class="container">
+            <section class="product spad">
+                <h3 class="text-center m-5">Tất cả sản phẩm của cửa hàng</h3>
+                <div class="row product__filter">
+                    @foreach (var row in Model)
+                    {
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-md-6 col-sm-6 mix">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="public/img/Product/@row.Img">
+                                    @if (@row.Price > row.PriceSale)
+                                    {
+                                        <a href="~/@row.Slug" class="label" style="color:red;border-radius:10px"><i class="fas fa-fire"></i>Giảm giá</a>
+                                    }
+                                    <ul class="product__hover">
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6>@row.Name</h6>
+                                    <a href="~/@row.Slug" class="add-cart">@row.Name</a>
+
+                                    <h5>@row.Price VND</h5>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        @Html.PagedListPager(Model, page => Url.Action("Product", "Home", new { page }))
+                                        </ul>
+                                    </nav>
+                            </div>
+                        </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+

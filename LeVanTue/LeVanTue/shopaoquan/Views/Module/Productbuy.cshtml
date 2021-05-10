@@ -1,0 +1,25 @@
+﻿@model IEnumerable<shopaoquan.Models.ModerProduct>
+@{
+    Layout = null;
+}
+
+<ul class="list-group">
+    <li class="list-group-item active">SẢN PHẨM MỚI NHẤT</li>
+    @foreach (var row_p in Model)
+    {
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-md-5">
+                    <a href="@row_p.Slug" style="color:black;font:20px"> <img class="img-fluid" src="~/public/img/Product/@row_p.Img" /></a>
+                </div>
+                <div class="col-lg-7">
+                    <a href="@row_p.Slug" style="color:black;font:20px">@row_p.Name</a><br />
+                    
+                    <a href="@row_p.Slug" style="color:black;font:20px">@row_p.Price VND</a>
+                </div>
+
+            </div>
+        </li>
+    }
+
+</ul>

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<shopaoquan.Models.ModerProduct>
+@{
+    Layout = null;
+}
+@if (Model.Count() != 0)
+{
+<div style="background:red">
+    <h3 class="text-center m-5" style="color:white">@ViewBag.NameCat</h3>
+</div>
+    <div class="row product__filter">
+        @foreach (var row in Model)
+        {
+            <div class="col-lg-4 col-md-6 col-sm-6 col-md-6 col-sm-6 mix">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="public/img/Product/@row.Img">
+                        @if (@row.Price > row.PriceSale)
+                        {
+                            <a href="~/@row.Slug" class="label" style="color:red;border-radius:10px"><i class="fas fa-fire"></i>Giảm giá</a>
+                        }
+                        <ul class="product__hover">
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6>@row.Name</h6>
+                        <a href="~/@row.Slug" class="add-cart" style="text-align:center">@row.Name</a>
+                        <h5>@row.Price VND</h5>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

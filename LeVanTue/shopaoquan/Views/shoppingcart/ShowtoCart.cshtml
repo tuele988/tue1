@@ -1,0 +1,93 @@
+﻿@model shopaoquan.Models.cart
+
+@{
+    ViewBag.Title = "ShowtoCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Action("MainMenu", "Module")
+<h2>ShowtoCart</h2>
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Sum</th>
+                <th>delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                double total = Convert.ToDouble(item._shopping_product.Price * item._shopping_quantity);
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item._shopping_product.Name);
+                    </td>
+                    <td>
+                        <img src="~/public/img/Product/@item._shopping_product.Img" style="width:100px;height:100px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item._shopping_product.Price)
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("Update_Quantity_Result", "shoppingcart"))
+                        {
+                            <input type="hidden" value="@item._shopping_product.Id" name="ID_Product" />
+                            <input type="number" value="@item._shopping_quantity" name="quantity" />
+                            <input type="submit" value="Update Quantity" />
+                        }
+                    </td>
+                    <td>
+                        Total: @total
+                    </td>
+                    <td>
+                        <a href="/ShoppingCart/RemoveCart/@item._shopping_product.Id">Remove</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">
+                    @using (Html.BeginForm("checkout", "shoppingcart"))
+                    {
+                        <table>
+                            <tr>
+                                <td>mã khách hàng</td>
+                                <td>
+                                    <input type="number" name="CodeCustomer" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    địa chỉ gửi
+                                </td>
+                                <td>
+                                    <input type="text" name="Address_Delivery" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><a href="@Url.Action("Create","Customer")" class="btn btn-success">Đăng Kí</a></td>
+                                <td><input type="submit" value="CheckOut" class="btn btn-success" /></td>
+                            </tr>
+                        </table>
+                    }
+                </td>
+            </tr>
+            <tr><td colspan="5">@Model.Total_Money()</td></tr>
+        </tfoot>
+    </table>
+    <a href="@Url.Action("Index","Home")">Tiếp Tục</a>
+}
+
+
+
+
+
+

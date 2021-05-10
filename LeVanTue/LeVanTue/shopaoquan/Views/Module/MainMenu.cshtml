@@ -1,0 +1,54 @@
+﻿@model IEnumerable<shopaoquan.Models.ModelMenu>
+@{
+    Layout = null;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2 col-md-2">
+            <div class="header__logo">
+                <a href="./index.html"><img src="img/logo.png" alt=""></a>
+            </div>
+        </div>
+        <div class="col-lg-7 col-md-7">
+            <nav class="header__menu mobile-menu" style="width:655px;padding-right:70px;">
+                <ul style="width: 655px;">
+                   
+                    @foreach (var row_m in Model)
+                    {
+                        @Html.Action("SubMainMenu", "module", new { @id = row_m.Id})
+                       
+                    }
+                
+                    
+                   
+                </ul>
+            </nav>
+        </div>
+        <div class="col-lg-2 col-md-2">
+            <div class="header__nav__option">
+                @using (Html.BeginForm("Index", "tim-kiem", FormMethod.Get, new { enctype = "multipart/form-data" }))
+                {
+
+                    <table>
+                        <tr>
+                            <td> <input type="text" class="form-control" name="key"> </td>
+
+                            <td><button type="submit" class="form-inline" style=" width: 35px; height: 37px;"><img src="templeate/img/icon/search.png" alt=""></button></td>
+                        </tr>
+
+                    </table>
+
+                }
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="header__logo">
+                <a href="~/ShoppingCart/ShowToCart">
+                    <img src="templeate/img/icon/cart.png" alt="" />
+                    <p>@Html.Action("BagCart", "shoppingcart")</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    <div class="canvas__open"><i class="fa fa-bars"></i></div>
+</div>

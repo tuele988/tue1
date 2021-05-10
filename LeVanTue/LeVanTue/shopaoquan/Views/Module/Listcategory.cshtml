@@ -1,0 +1,19 @@
+﻿@model IEnumerable<shopaoquan.Models.ModelCategory>
+@{
+    Layout = null;
+}
+
+<div class="container" style="margin-top:50px">
+                @{ string t = ".jpg";}
+    <div class="row">
+        @foreach (var row_c in Model)
+        {
+            <div class="card col-md-2" style="border: none;">
+                <img class="card-img-top" src="~/templeate/img/banner/@row_c.Name@t" alt="Card image cap" style="width:100px; height:100px; margin:0 auto">
+                
+                    <a href="@row_c.Slug" style="color:black; text-align:center;">@row_c.Name</a>
+             
+            </div>
+        }
+    </div>
+</div>

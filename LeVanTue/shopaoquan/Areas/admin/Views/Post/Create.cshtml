@@ -1,0 +1,81 @@
+﻿@model shopaoquan.Models.ModelPost
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/admin/Views/Shared/_AdminLayput.cshtml";
+}
+@using (Html.BeginForm("Create", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-6 text-danger text-uppercase">
+                    <strong>Thêm bài viết</strong>
+                </div>
+                <div class="col-6 text-right">
+                    <a href="@Url.Action("Index","Post")" class="btn btn-sn btn-success">Quay về quản lý</a>
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label><strong>Tên loại danh muc(<span class="text-danger">*</span>)</strong></label>
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Chi tiết(<span class="text-danger">*</span>)</strong></label>
+                        @Html.TextAreaFor(model => model.Detail, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Loại bài viết(<span class="text-danger">*</span>)</strong></label>
+                        @Html.DropDownListFor(model => model.Type, new[] { new SelectListItem { Text = "Page", Value = "page" }, new SelectListItem { Text = "Post", Value = "post" } }, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Key seo(<span class="text-danger">*</span>)</strong></label>
+                        @Html.TextAreaFor(model => model.Metakey, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Metakey, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Mô tả(<span class="text-danger">*</span>)</strong></label>
+                        @Html.TextAreaFor(model => model.Metadesc, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Metadesc, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label><strong>Hình ảnh(<span class="text-danger">*</span>)</strong></label>
+                        <input type="file" name="Img" class="form-control" />
+                        @Html.ValidationMessage("HINHANH")
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Trạng thái(<span class="text-danger">*</span>)</strong></label>
+                        @Html.DropDownListFor(model => model.Topid, (SelectList)ViewBag.Listtopic, "[Thể loại bài viết]", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Topid, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Trạng thái(<span class="text-danger">*</span>)</strong></label>
+                        @Html.DropDownListFor(model => model.Status, new[] { new SelectListItem { Text = "Xuất bản", Value = "1" }, new SelectListItem { Text = "Chưa xuất bản", Value = "2" } }, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+
+
+
